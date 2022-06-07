@@ -340,7 +340,7 @@
                             window.location.href = '/pages/products/list.html';
                         }
                     }
-                    xmlHttpRequest.open('POST', 'https://hacodern.herokuapp.com/api/v1/products', false);
+                    xmlHttpRequest.open('POST', 'https://hacodern-api.herokuapp.com/api/v1/products', false);
                     xmlHttpRequest.setRequestHeader('Content-Type', 'application/json');
                     xmlHttpRequest.send(dataToSend);
                 }
@@ -370,7 +370,7 @@
                     }
                 }
             }
-            xmlHttpRequest.open('GET', 'https://hacodern.herokuapp.com/api/v1/products', false);
+            xmlHttpRequest.open('GET', 'https://hacodern-api.herokuapp.com/api/v1/products', false);
             xmlHttpRequest.send();
         }
     </script>
