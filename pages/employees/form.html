@@ -44,16 +44,6 @@
 
             <!-- Sidebar -->
             <div class="sidebar">
-                <!-- Sidebar user (optional) -->
-                <!--        <div class="user-panel mt-3 pb-3 mb-3 d-flex">-->
-                <!--          <div class="image">-->
-                <!--            <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">-->
-                <!--          </div>-->
-                <!--          <div class="info">-->
-                <!--            <a href="#" class="d-block">Alexander Pierce</a>-->
-                <!--          </div>-->
-                <!--        </div>-->
-
                 <!-- SidebarSearch Form -->
                 <div class="form-inline">
                     <div class="input-group" data-widget="sidebar-search">
@@ -71,8 +61,6 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-                         with font-awesome or any other icon font library -->
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -134,78 +122,23 @@
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                    <form action="/pages/products/list.html" method="post" name="create-product-form">
+                                    <form action="/pages/employees/list.html" method="post" name="create-employee-form">
                                         <div class="row">
                                             <div class="col-sm-4">
                                                 <!-- text input -->
                                                 <div class="form-group">
                                                     <label>Name</label>
                                                     <input type="text" name="name" class="form-control"
-                                                        placeholder="Please enter name product">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                    <label>Slug</label>
-                                                    <input type="text" name="slug" class="form-control"
-                                                        placeholder="Please enter slug">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <div class="form-group">
-                                                    <label>Description</label>
-                                                    <input type="text" name="description" value="" class="form-control"
-                                                        placeholder="Please enter description">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <!-- text input -->
-                                                <div class="form-group">
-                                                    <label>Detail</label>
-                                                    <textarea type="text" name="detail" class="form-control"
-                                                        placeholder="Please enter detail"></textarea>
+                                                        placeholder="Please enter employee's name">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <div class="form-group">
-                                                    <label>Price</label>
-                                                    <input type="number" name="price" value="" class="form-control"
-                                                        placeholder="Please enter price">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Manufacturer</label>
-                                                    <input type="text" name="manufacturer" value="" class="form-control"
-                                                        placeholder="Please enter manufacturer">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                    <label>Thumbnail</label>
-                                                    <div class="input-group">
-                                                        <div class="custom-file">
-                                                            <input type="text" name="thumbnail" value=""
-                                                                class="form-control" placeholder="Please choose image">
-                                                        </div>
-                                                        <div class="input-group-append" id="upload_widget">
-                                                            <span class="input-group-text">Upload</span>
-                                                        </div>
-                                                    </div>
-                                                    <img id="preview-image" style="display: none" src="" alt=""
-                                                        class="img-bordered mt-2" sizes="200px">
+                                                    <label>Wage</label>
+                                                    <input type="number" name="wage" value="" class="form-control"
+                                                        placeholder="Please enter employee's wage">
                                                 </div>
                                             </div>
                                         </div>
@@ -304,43 +237,28 @@
             handleSubmit();
         })
         function handleSubmit() {
-            var btnSubmit = document.forms['create-product-form']['btn-submit'];
-            var txtName = document.forms['create-product-form']['name'];
-            var txtSlug = document.forms['create-product-form']['slug'];
-            var txtDescription = document.forms['create-product-form']['description'];
-            var txtDetail = document.forms['create-product-form']['detail'];
-            var txtPrice = document.forms['create-product-form']['price'];
-            var txtManufacturer = document.forms['create-product-form']['manufacturer'];
-            var txtThumbnail = document.forms['create-product-form']['thumbnail'];
+            var btnSubmit = document.forms['create-employee-form']['btn-submit'];
+            var txtName = document.forms['create-employee-form']['name'];
+            var txtWage = document.forms['create-employee-form']['wage'];
 
             if (btnSubmit) {
                 btnSubmit.onclick = function (event) {
                     event.preventDefault();
                     var name = txtName.value;
-                    var slug = txtSlug.value;
-                    var description = txtDescription.value;
-                    var detail = txtDetail.value;
-                    var price = txtPrice.value;
-                    var manufacturer = txtManufacturer.value;
-                    var thumbnail = txtThumbnail.value;
+                    var wage = txtWage.value;
                     var obj = {
                         'name': name,
-                        'slug': slug,
-                        'description': description,
-                        'detail': detail,
-                        'price': price,
-                        'manufacturer': manufacturer,
-                        'thumbnail': thumbnail
+                        'wage': wage
                     }
                     var dataToSend = JSON.stringify(obj);
                     var xmlHttpRequest = new XMLHttpRequest();
                     xmlHttpRequest.onreadystatechange = function () {
                         if (xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200) {
                             alert('Create new success!');
-                            window.location.href = '/pages/products/list.html';
+                            window.location.href = '/pages/employees/list.html';
                         }
                     }
-                    xmlHttpRequest.open('POST', 'https://hacodern-api.herokuapp.com/api/v1/products', false);
+                    xmlHttpRequest.open('POST', 'https://hacodern-api.herokuapp.com/api/v1/employees', false);
                     xmlHttpRequest.setRequestHeader('Content-Type', 'application/json');
                     xmlHttpRequest.send(dataToSend);
                 }
@@ -370,7 +288,7 @@
                     }
                 }
             }
-            xmlHttpRequest.open('GET', 'https://hacodern-api.herokuapp.com/api/v1/products', false);
+            xmlHttpRequest.open('GET', 'https://hacodern-api.herokuapp.com/api/v1/employees', false);
             xmlHttpRequest.send();
         }
     </script>

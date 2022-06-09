@@ -256,34 +256,24 @@
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                    <table name="list-product" class="table table-bordered table-striped">
+                                    <table name="list-employee" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Name</th>
-                                                <th>Slug</th>
-                                                <th>Description</th>
-                                                <th>Detail</th>
-                                                <th>Price</th>
-                                                <th>Manufacturer</th>
-                                                <th>Thumbnail</th>
+                                                <th>Wage</th>
                                                 <th>Status</th>
 
                                             </tr>
                                         </thead>
-                                        <tbody id="list-product">
+                                        <tbody id="list-employee">
 
                                         </tbody>
                                         <tfoot>
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Name</th>
-                                                <th>Slug</th>
-                                                <th>Description</th>
-                                                <th>Detail</th>
-                                                <th>Price</th>
-                                                <th>Manufacturer</th>
-                                                <th>Thumbnail</th>
+                                                <th>Wage</th>
                                                 <th>Status</th>
                                             </tr>
                                         </tfoot>
@@ -367,29 +357,22 @@
                     var jsonResult = JSON.parse(xmlHttpRequest.responseText);
                     for (let i = 0; i < jsonResult.length; i++) {
                         const element = jsonResult[i];
+                        if (element.deleted == false) {
+                            element.deleted = "Active";
+                        }
                         contentText += `<tr> 
                                             <td> ${element.id} </td>
                                             <td> ${element.name} </td>
-                                            <td> ${element.slug} </td>
-                                            <td> ${element.description} </td>
-                                            <td> ${element.detail} </td>
-                                            <td> ${element.price} </td>
-                                            <td> ${element.manufacturer} </td>
-                                            <td> 
-                                                <img src="${element.thumbnail}" alt="${element.name}" width="150px">  
-                                            </td>
+                                            <td> ${element.wage} đ</td>
                                             <td> ${element.deleted} </td>
                                         </tr>`;
                     }
-                    console.log(contentText);
-                    var listProduct = document.getElementById('list-product');
+                    var listProduct = document.getElementById('list-employee');
                     if (listProduct !== undefined) {
                         listProduct.innerHTML = contentText;
-                    }
-                    console.log(jsonResult);
-                }
+                    }                }
             }
-            xmlHttpRequest.open('GET', 'https://hacodern-api.herokuapp.com/api/v1/products', true)
+            xmlHttpRequest.open('GET', 'https://hacodern-api.herokuapp.com/api/v1/employees', false)
             xmlHttpRequest.send();
         })
     </script>
