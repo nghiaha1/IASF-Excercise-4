@@ -1,1 +1,1 @@
-<?php include_once("pages/products/list.html"); ?>
+<?php include_once("pages/employees/list.html"); ?>
